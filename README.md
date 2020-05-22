@@ -35,4 +35,4 @@ Maven笔记：https://ssiriyang.github.io/2020/05/15/JavaMaven/
 3. SocketStudy
 4. RegularStudy
 
-Java日期及日期格式化笔记:
+Java日期及日期格式化笔记:https://ssiriyang.github.io/2020/05/20/Java%E6%97%A5%E6%9C%9F%E6%97%B6%E9%97%B4/
