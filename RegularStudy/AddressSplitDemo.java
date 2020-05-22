@@ -25,7 +25,7 @@ public class AddressSplitDemo {
      * @return List<Map<String,String>> 保证插入有序
      **/
     public static List<Map<String,String>> addressResolution(String address){
-        String regex="((?<country>[^国]+国)(?<province>[^省]*?省)(?<city>[^市]+市)(?<Area>[^区]+区)(?<street>[^街]+街)(?<DoorNumber>[^栋]+栋))";
+        String regex="((?<country>[^国]+国)(?<province>[^省]*?省)(?<city>[^市]+市)(?<Area>[^区]+区)(?<street>[^街]+街)(?<DoorNumber>[^门]+门|.+元))";
         //Pattern，正则表达式的编译表示，操作字符序列的利器。
         //整个Pattern是一个树形结构(对应于表达式中的‘|’)，一般为链表结构，树(链表)的基本元素是Node结点，Node有各种各样的子结点，以满足不同的匹配模式。
         Matcher m= Pattern.compile(regex).matcher(address);

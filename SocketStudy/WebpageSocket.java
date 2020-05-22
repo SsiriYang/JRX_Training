@@ -1,9 +1,7 @@
 package com.codeyang.jrxtraining.SocketStudy;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
+import java.io.*;
+import java.net.InetAddress;
 import java.net.Socket;
 
 /**
@@ -12,24 +10,30 @@ import java.net.Socket;
  * Description
  */
 public class WebpageSocket {
-    private static int port = 80;
-    private static String hostname = "www.baidu.com";
     public static void main(String[] args) throws Exception{
-        Socket socket = new Socket(hostname, port);
-        BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream(), "utf-8"));
-        writer.write("GET " + "/ask" + " HTTP/1.0\r\n");
-        writer.write("HOST:" + hostname + "\r\n");
-        writer.write("Accept:*/*\r\n");
-        writer.write("\r\n");
-        writer.flush();
+        Socket s=new Socket(InetAddress.getByName("47.98.178.173"),8080);
+        //可以理解成request请求，想服务器发送数据
 
-        BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream(), "utf-8"));
-        String line = null;
-        while ((line = reader.readLine()) != null) {
-            System.out.println(line);
+        OutputStream os=s.getOutputStream();
+        OutputStreamWriter osw=new OutputStreamWriter(os);
+        BufferedWriter bw=new BufferedWriter(osw);
+
+        //编辑请求头，也就是请求参数，这是最基本的 正常请求会带好多参数
+        bw.write("GET / HTTP/1.1\r\n");
+        bw.write("Connection: Keep-Alive\r\n");
+        bw.write("Host: 47.98.178.173\r\n");
+        bw.write("Connection: Keep-Alive\r\n\r\n");
+        bw.flush();
+        //关闭客户端的输出流
+        s.shutdownOutput();
+        //这里当然是response响应了
+        InputStream is=s.getInputStream();
+        BufferedReader br=new BufferedReader(new InputStreamReader(is));
+        String str=null;
+        while((str=br.readLine())!=null){
+            System.out.println(str);
         }
-        reader.close();
-        writer.close();
-        socket.close();
+
+        s.close();
     }
 }
