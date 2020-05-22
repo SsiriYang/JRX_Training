@@ -1,0 +1,36 @@
+HTTP/1.1 200 OK
+Server: Apache-Coyote/1.1
+Cache-Control: no-cache
+Set-Cookie: JSESSIONID=207E776AD54B49E26DDE6A4CCAF70024; Path=/; HttpOnly
+Content-Type: text/html;charset=UTF-8
+Content-Length: 1072
+Date: Fri, 22 May 2020 05:09:24 GMT
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">  
+		<title>餐饮管理系统-登录</title>
+			<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css"/>
+		<link rel="stylesheet" href="/css/login.css" />
+	</head>
+	<body>
+		<div class="content">
+			<div class="header">
+				<span>
+					<p class="p1">餐饮管理系统</p>
+					<p class="p2">management system of Internet of things</p>
+				</span>
+			</div>
+			<div class="login">
+				<form action="/loginAction" method="post">
+					<input type="text" class="form-control name" placeholder="手机号" type="tel" maxlength="11" name="user.phone" required="required"/>
+						<input type="password" class=" form-control pass" placeholder="密码" maxlength="15" name="user.password" required="required"/>
+						<input type="submit" class="btn btn-info denglu" value="登录">
+						<p>&nbsp;<p>
+				</form>
+			</div>
+		</div>
+	</body>
+</html>
