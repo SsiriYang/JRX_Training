@@ -3,6 +3,7 @@ package com.codeyang.jrxtraining.FileStudy;
 import org.junit.Test;
 
 import java.io.*;
+import java.util.LinkedList;
 import java.util.Scanner;
 
 /**
@@ -17,7 +18,10 @@ public class ReadAndWriteDemo {
      * @throws FileNotFoundException
      * @throws IOException
      */
-    private static int read(String path) throws FileNotFoundException, IOException {
+    public  ReadAndWriteDemo(){
+
+    }
+    public static int read(String path) throws FileNotFoundException, IOException {
         // 指定要读取的文件
         File file = new File(path);
         // 获得该文件的缓冲输入流
@@ -37,12 +41,15 @@ public class ReadAndWriteDemo {
         }
     }
 
+
+
+
     /**
      * DOC 写入信息.
      *
      * @throws IOException
      */
-    private static int write(String path) throws IOException {
+    public static int writesome(String path, LinkedList<String> content) throws IOException {
         // 指定要写入的文件
         File file = new File(path);
         // 如果文件不存在则创建
@@ -52,8 +59,8 @@ public class ReadAndWriteDemo {
         // 获取该文件的缓冲输出流
         BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file));
         // 写入信息
-        for(int i = 0;i<100000;i++){
-            bufferedWriter.write(i+"");
+        for (String str : content) {
+            bufferedWriter.write(str+"");
             // 表示换行
             bufferedWriter.newLine();
         }
@@ -63,6 +70,7 @@ public class ReadAndWriteDemo {
         bufferedWriter.close();
         return 1;
     }
+
     public static int clearInfoForFile(String fileName) {
         File file =new File(fileName);
         try {
@@ -80,7 +88,12 @@ public class ReadAndWriteDemo {
     }
     public static void main(String[] args) throws IOException {
         Scanner sc = new Scanner(System.in);
-        int writeRes = ReadAndWriteDemo.write("E:\\JavaSourceLearn\\src\\com\\codeyang\\jrxtraining\\FileStudy\\Demo.txt");
+        //构建数据
+        LinkedList<String> content = new LinkedList<String>();
+        for(int i=0;i<100000;i++){
+            content.add(i+"");
+        }
+        int writeRes = ReadAndWriteDemo.writesome("E:\\JavaSourceLearn\\src\\com\\codeyang\\jrxtraining\\FileStudy\\Demo.txt",content);
         System.out.println(writeRes>0?"写入完成":"写入失败");
         //阻塞
         String nextRead = sc.nextLine();

@@ -8,7 +8,7 @@ public class FileReaderTest {
 	public static void main(String[] args) {
 		FileReader fr = null;
 		try {
-			File file = new File("E:\\JAVA02\\20190331\\aa.txt");
+			File file = new File("E:\\JavaSourceLearn\\src\\com\\codeyang\\jrxtraining\\FileStudy\\IOStudy\\bb.txt");
 			fr = new FileReader(file);
 
 			int c=-1;
